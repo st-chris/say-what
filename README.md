@@ -1,6 +1,10 @@
+## Say what?!
+
+A word game in which users have to spell the spoken word. Uses the SpeechSynthesis interface of the Web Speech API.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
