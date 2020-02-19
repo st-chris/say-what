@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faForward,
@@ -7,11 +7,13 @@ import {
   faPlay,
   faPlus
 } from '@fortawesome/free-solid-svg-icons';
-import './App.css';
-import { alphabet, getWords } from './assets/nl';
+import { alphabet, alphaObject } from '../../assets/nl';
+import TitleBar from '../../components/title-bar/TitleBar';
+import CustomButton from '../../components/custom-button/CustomButton';
 
-function App() {
+const Game = () => {
   let woorden = [];
+  let letterIndex = [];
   let indexWord = 0;
   let score = 0;
 
@@ -32,9 +34,10 @@ function App() {
     indexWord = 0;
     score = 0;
     for (let letter of alphabet) {
-      let randomNum = Math.floor(Math.random() * letter.length);
-      woorden.push(...getWords(letter).splice(randomNum, 1));
+      let randomNum = Math.floor(Math.random() * alphaObject[letter].length);
+      woorden.push([alphaObject[letter][randomNum], letter, randomNum]);
     }
+    console.log(letterIndex);
     document.getElementById('game').style.background = '#f7f8f9';
     document.getElementById('input').value = '';
     gameCount();
@@ -69,7 +72,8 @@ function App() {
   };
 
   const playWord = () => {
-    var to_speak = new SpeechSynthesisUtterance(woorden[indexWord]);
+    var to_speak = new SpeechSynthesisUtterance(woorden[indexWord][0]);
+    to_speak.lang = 'nl-NL';
     to_speak.voice = window.speechSynthesis
       .getVoices()
       .filter(v => v.lang === 'nl-NL')[0];
@@ -79,11 +83,13 @@ function App() {
     e.preventDefault();
     let input = document.getElementById('input').value.toLowerCase();
     const gameDiv = document.getElementById('game');
-    if (input === woorden[indexWord]) {
+    if (input === woorden[indexWord][0]) {
       gameDiv.style.background = 'green';
       score++;
       setScore();
       gameInfoText('Correct! Click next for a new word.');
+      alphaObject[woorden[indexWord][1]].splice(woorden[indexWord][2], 1);
+      console.log(alphaObject[woorden[indexWord][1]]);
     } else {
       gameDiv.style.background = 'red';
       gameInfoText('Wrong! Please try again.');
@@ -91,10 +97,10 @@ function App() {
   };
 
   return (
-    <div className='container'>
-      <div className='game-box'>
-        <div className='title w-100'>Say what?!</div>
-        <div className='game-stats w-100'>
+    <Fragment>
+      <TitleBar title='Say what?!' />
+      <div className='content w-100'>
+        <div className='game-stats w-100 text-center text-top'>
           <div id='score-box'>
             Score: <span id='score'>0 / 0</span>
           </div>
@@ -123,20 +129,20 @@ function App() {
             <FontAwesomeIcon icon={faForward} />
           </button>
         </div>
-        <div id='game-info' className='game-info w-100'>
+        <div id='game-info' className='game-info w-100 text-center'>
           Press 'New game' to start!
         </div>
         <div className='buttons w-100'>
-          <button className='btn-first btn-play' onClick={playWord}>
+          <CustomButton onClick={playWord} side='left'>
             <FontAwesomeIcon icon={faPlay} /> Play word
-          </button>
-          <button className='btn-first btn-new' onClick={newGame}>
+          </CustomButton>
+          <CustomButton onClick={newGame} side='right'>
             <FontAwesomeIcon icon={faPlus} /> New Game
-          </button>
+          </CustomButton>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
-}
+};
 
-export default App;
+export default Game;

@@ -1,0 +1,32 @@
+.custom-button {
+  width: auto;
+  height: 50px;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  font-size: 18px;
+  box-sizing: border-box;
+  background-color: #8e676e;
+  color: #e4aa26;
+  text-transform: uppercase;
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+}
+.custom-button:hover {
+  background-color: #e4aa26;
+  color: #8e676e;
+  border: 1px solid #8e676e;
+}
+.left {
+  border-bottom-left-radius: 10px;
+}
+.right {
+  border-bottom-right-radius: 10px;
+}
+.p-10 {
+  text-decoration: none;
+  text-align: center;
+}
+.icon {
+  padding: 5px;
+}

@@ -1,0 +1,15 @@
+.title {
+  display: grid;
+  grid-template-columns: 35px 35px 1fr 35px 35px;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #8e676e;
+  color: #e4aa26;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 1.5em;
+}
+.title div {
+  padding: 5px;
+}

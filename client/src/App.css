@@ -1,11 +1,23 @@
+/* colors
+light: #FAF5F4
+golden grass: #E4AA26
+bali hai: #8E93B1
+opium: #8E676E
+bleached ceddar: #281A2A */
 body {
-  text-align: center;
+  font-family: 'Varela Round', sans-serif;
 }
 h1 {
   color: #8e676e;
 }
 .w-100 {
   width: 100%;
+}
+.text-center {
+  text-align: center;
+}
+.text-top {
+  margin-top: 10px;
 }
 .container {
   display: grid;
@@ -23,22 +35,18 @@ h1 {
   display: grid;
   justify-items: center;
   align-items: center;
+  min-width: 300px;
   max-width: 800px;
 }
-.title {
-  display: grid;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  font-size: 1.5em;
-}
-.game-stats {
+
+.game-stats,
+.content {
   background-color: #f7f8f9;
-  padding-top: 10px;
+  box-sizing: border-box;
 }
 .game {
   display: grid;
   grid-template-columns: 40px 1fr 40px;
-  background-color: #f7f8f9;
   box-sizing: border-box;
   padding: 10px;
 }
@@ -61,7 +69,6 @@ h1 {
   width: 80%;
 }
 .game-info {
-  background-color: #f7f8f9;
   padding: 10px;
   box-sizing: border-box;
 }
@@ -71,8 +78,7 @@ h1 {
   grid-template-columns: 1fr 1fr;
   column-gap: 0;
 }
-.btn-first,
-.title {
+.btn-first {
   box-sizing: border-box;
   background-color: #8e676e;
   color: #e4aa26;
