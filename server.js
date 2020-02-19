@@ -20,7 +20,6 @@ app.use('/api/profile', require('./routes/api/profile'));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(express.static(path.join(__dirname, 'client/build')));
 
   app.get('*', function(req, res) {
