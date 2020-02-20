@@ -2,6 +2,12 @@
 
 A word game in which users have to spell the spoken word. Uses the SpeechSynthesis interface of the Web Speech API.
 
+Work in progress:
+
+- Adding user profile / settings
+- Personal progress in words
+- Awards for performance
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Available Scripts
