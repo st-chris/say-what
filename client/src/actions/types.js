@@ -8,3 +8,6 @@ export const SIGNOUT = 'SIGNOUT';
 export const GET_PROFILE = 'GET_PROFILE';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
+export const GET_WORDS = 'GET_WORDS';
+export const CLEAR_WORDS = 'CLEAR_WORDS';
+export const WORDS_ERROR = 'WORDS_ERROR';

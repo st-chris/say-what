@@ -52,9 +52,12 @@ router.post(
       // Save user to db
       await user.save();
 
+      //Words
+      const wordList = await Words.find();
       // Create profile
       let profile = new Profile({
-        user: user.id
+        user: user.id,
+        words: wordList[0]
       });
       await profile.save();
       // Create settings for user

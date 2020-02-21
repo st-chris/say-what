@@ -5,6 +5,7 @@ import Game from './pages/game/Game';
 import SignIn from './components/sign-in/SignIn';
 import SignUp from './components/sign-up/SignUp';
 import Profile from './pages/profile/Profile';
+import setAuthToken from './utils/setAuthToken';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -12,6 +13,10 @@ import store from './store';
 import { loadUser } from './actions/auth';
 
 import './App.css';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
   useEffect(() => {

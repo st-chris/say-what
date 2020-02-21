@@ -1,0 +1,52 @@
+.one-button {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.one-message {
+  padding: 10px;
+}
+.green {
+  background-color: #7ec97e;
+}
+
+.red {
+  background-color: #b24747;
+}
+
+.game-stats {
+  background-color: #f7f8f9;
+  box-sizing: border-box;
+}
+.game {
+  display: grid;
+  grid-template-columns: 1fr;
+  box-sizing: border-box;
+  padding: 10px;
+}
+#controls {
+  padding: 10px;
+}
+.previous,
+.next {
+  background-color: #f7f8f9;
+  color: #e4aa26;
+  height: 100%;
+  border: none;
+  font-size: 1.5rem;
+}
+.answer {
+  font-size: 1.5rem;
+  border: 1px solid #e4aa26;
+  color: #8e676e;
+  padding: 4px;
+  width: 80%;
+}
+.game-info {
+  padding: 10px;
+  box-sizing: border-box;
+}
+.game-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0;
+}

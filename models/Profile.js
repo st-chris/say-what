@@ -5,6 +5,7 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
+  words: { type: Object },
   stats: {
     words: { type: Number, default: 0 },
     correct: { type: Number, default: 0 }

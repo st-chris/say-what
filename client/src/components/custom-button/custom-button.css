@@ -17,10 +17,12 @@
   color: #8e676e;
   border: 1px solid #8e676e;
 }
-.left {
+.left,
+.both {
   border-bottom-left-radius: 10px;
 }
-.right {
+.right,
+.both {
   border-bottom-right-radius: 10px;
 }
 .p-10 {
