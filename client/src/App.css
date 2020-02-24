@@ -48,6 +48,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 0;
+  align-self: end;
 }
 .btn-first {
   box-sizing: border-box;

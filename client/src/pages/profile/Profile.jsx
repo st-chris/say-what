@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getProfile } from '../../actions/profile';
 import TitleBar from '../../components/title-bar/TitleBar';
 import CustomButton from '../../components/custom-button/CustomButton';
+import './profile.css';
 
 const Profile = ({
   getProfile,
@@ -25,11 +26,11 @@ const Profile = ({
             <div className='text-center text-top'>
               Profile of {user && user.name}
             </div>
-            <div className='text-center'>
-              Words played: {profile.stats.words}
-            </div>
-            <div className='text-center'>
-              Words correct: {profile.stats.correct}
+            <div className='stats'>
+              <div className='text-right'>Words played:</div>
+              <div className='text-center'>{profile.stats.words}</div>
+              <div className='text-right'>Words correct:</div>
+              <div className='text-center'> {profile.stats.correct}</div>
             </div>
           </Fragment>
         )}
