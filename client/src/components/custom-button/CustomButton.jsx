@@ -8,7 +8,7 @@ const CustomButton = ({ children, side, icon, ...otherProps }) => {
   return (
     <Component
       className={`custom-button ${side ? side : ''} ${icon ? 'icon' : ''} ${
-        otherProps.to ? 'p-10' : ''
+        otherProps.to ? 'link' : ''
       }`}
       {...otherProps}
     >

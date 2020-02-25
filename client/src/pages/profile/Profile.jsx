@@ -26,7 +26,7 @@ const Profile = ({
             <div className='text-center text-top'>
               Profile of {user && user.name}
             </div>
-            <div className='stats'>
+            <div className='stats p-10'>
               <div className='text-right'>Words played:</div>
               <div className='text-center'>{profile.stats.words}</div>
               <div className='text-right'>Words correct:</div>

@@ -65,3 +65,26 @@ export const addToCount = toAdd => async dispatch => {
     });
   }
 };
+
+// Save settings to profile
+export const saveProfileSettings = settings => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const res = await axios.post('/api/profile/settings', settings, config);
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    });
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: error.response.statusText, status: error.response.status }
+    });
+  }
+};

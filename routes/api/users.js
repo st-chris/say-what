@@ -7,7 +7,7 @@ const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
 const Profile = require('../../models/Profile');
-const Settings = require('../../models/Settings');
+// const Settings = require('../../models/Settings');
 
 // @route   POST api/users
 // @desc    Register user
@@ -61,10 +61,10 @@ router.post(
       });
       await profile.save();
       // Create settings for user
-      let settings = new Settings({
-        user: user.id
-      });
-      await settings.save();
+      // let settings = new Settings({
+      //   user: user.id
+      // });
+      // await settings.save();
       // Return jsonwebtoken
       const payload = {
         user: {

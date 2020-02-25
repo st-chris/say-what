@@ -5,6 +5,7 @@ import Game from './pages/game/Game';
 import SignIn from './components/sign-in/SignIn';
 import SignUp from './components/sign-up/SignUp';
 import Profile from './pages/profile/Profile';
+import Settings from './pages/settings/Settings';
 import setAuthToken from './utils/setAuthToken';
 
 //Redux
@@ -34,6 +35,7 @@ const App = () => {
                 <Route exact path='/signin' component={SignIn} />
                 <Route exact path='/signup' component={SignUp} />
                 <PrivateRoute exact path='/profile' component={Profile} />
+                <PrivateRoute exact path='/settings' component={Settings} />
               </Switch>
             </div>
           </div>

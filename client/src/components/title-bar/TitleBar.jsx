@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -33,18 +33,20 @@ const TitleBar = ({ auth: { isAuthenticated, loading }, signout, title }) => {
         )}
       </div>
       <div>{title}</div>
-      <div>
-        <CustomButton icon='true' to='/'>
-          <FontAwesomeIcon icon={faCog} />
-        </CustomButton>
-      </div>
-      <div>
-        {!loading && isAuthenticated && (
-          <CustomButton icon='true' to='/' onClick={signout}>
-            <FontAwesomeIcon icon={faSignOutAlt} />
-          </CustomButton>
-        )}
-      </div>
+      {!loading && isAuthenticated && (
+        <Fragment>
+          <div>
+            <CustomButton icon='true' to='/settings'>
+              <FontAwesomeIcon icon={faCog} />
+            </CustomButton>
+          </div>
+          <div>
+            <CustomButton icon='true' to='/' onClick={signout}>
+              <FontAwesomeIcon icon={faSignOutAlt} />
+            </CustomButton>
+          </div>
+        </Fragment>
+      )}
     </div>
   );
 };

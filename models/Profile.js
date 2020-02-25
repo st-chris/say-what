@@ -6,6 +6,7 @@ const ProfileSchema = new mongoose.Schema({
     ref: 'user'
   },
   words: { type: Object },
+  voice_speed: { type: Number, default: 1 },
   stats: {
     words: { type: Number, default: 0 },
     correct: { type: Number, default: 0 }

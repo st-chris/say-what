@@ -38,7 +38,6 @@ router.post('/word', [auth], async (req, res) => {
     [fieldToUpdate]: req.body[1]
   };
   try {
-    // Using upsert option (creates new doc if no match is found):
     let profile = await Profile.findOneAndUpdate(
       { user: req.user.id },
       { $pull: update },
@@ -60,10 +59,28 @@ router.post('/count', [auth], async (req, res) => {
     [fieldToUpdate]: 1
   };
   try {
-    // Using upsert option (creates new doc if no match is found):
     let profile = await Profile.findOneAndUpdate(
       { user: req.user.id },
       { $inc: update },
+      { new: true }
+    );
+    res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    POST api/profile/settings
+// @desc     Save settings to db
+// @access   Private
+router.post('/settings', [auth], async (req, res) => {
+  console.log(req.body);
+  try {
+    // Using upsert option (creates new doc if no match is found):
+    let profile = await Profile.findOneAndUpdate(
+      { user: req.user.id },
+      { $set: req.body },
       { new: true }
     );
     res.json(profile);

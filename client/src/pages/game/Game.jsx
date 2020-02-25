@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import {
   getProfile,
@@ -36,34 +36,51 @@ const Game = ({
   deleteWord,
   resetAttempts
 }) => {
+  // Clean up for new word
+  const newWord = useCallback(() => {
+    let input = document.getElementById('input');
+    let gameDiv = document.getElementById('game');
+    if (input) input.value = '';
+    if (gameDiv) {
+      gameDiv.classList.remove('green');
+      gameDiv.classList.remove('red');
+    }
+    changeGameInfo('Click "Play Word" to repeat the audio');
+  }, [changeGameInfo]);
+
+  // Play the current word
+  const playWord = useCallback(
+    words => {
+      if (words.length) {
+        var to_speak = new SpeechSynthesisUtterance(words[0][0]);
+        to_speak.lang = 'nl-NL';
+        to_speak.rate = Number(profile.voice_speed);
+        to_speak.voice = window.speechSynthesis
+          .getVoices()
+          .filter(v => v.lang === 'nl-NL')[0];
+        window.speechSynthesis.speak(to_speak);
+      }
+    },
+    [profile]
+  );
+
   useEffect(() => {
-    getProfile();
+    if (!profile) getProfile();
     if (woorden.length) {
-      let timer = setTimeout(() => playWord(woorden), 1000);
+      let timer = setTimeout(() => {
+        newWord();
+        playWord(woorden);
+      }, 1000);
       return () => {
         clearTimeout(timer);
       };
     }
-  }, [getProfile, woorden]);
+  }, [getProfile, newWord, playWord, profile, woorden]);
 
   // Initialize new game
   const newRound = () => {
     newGame(profile.words);
-    changeGameInfo('Click "Play Word" to repeat the audio');
-    let input = document.getElementById('input');
-    if (input) input.value = '';
-  };
-
-  // Play the current word
-  const playWord = words => {
-    if (words.length) {
-      var to_speak = new SpeechSynthesisUtterance(words[0][0]);
-      to_speak.lang = 'nl-NL';
-      to_speak.voice = window.speechSynthesis
-        .getVoices()
-        .filter(v => v.lang === 'nl-NL')[0];
-      window.speechSynthesis.speak(to_speak);
-    }
+    newWord();
   };
 
   // Check if input is correct
@@ -80,7 +97,6 @@ const Game = ({
     if (input.value.toLowerCase() === woorden[0][0]) {
       correctDeleteWord([woorden[0][1], woorden[0][0]]);
       deleteWord(0);
-      resetAttempts();
       // Color background green
       gameDiv.classList.add('green');
       changeGameInfo('Correct!');
@@ -88,12 +104,10 @@ const Game = ({
       incr('score');
       incr('wordCount');
       addToCount('correct');
-
+      resetAttempts();
       if (woorden.length > 1) {
         setTimeout(function() {
-          gameDiv.classList.remove('green');
-          changeGameInfo('Click "Play Word" to repeat the audio');
-          input.value = '';
+          newWord();
         }, 1500);
       } else {
         setTimeout(function() {
@@ -107,7 +121,9 @@ const Game = ({
       if (attempts < 2) {
         changeGameInfo('Wrong! Please try again.');
         setTimeout(function() {
-          playWord(woorden);
+          if (input.value) input.value = '';
+          gameDiv.classList.remove('red');
+          // playWord(woorden);
         }, 1000);
       } else {
         incr('wordCount');
@@ -115,11 +131,6 @@ const Game = ({
         deleteWord(0);
         resetAttempts();
       }
-      setTimeout(function() {
-        document.getElementById('input').value = '';
-        gameDiv.classList.remove('red');
-        changeGameInfo('Click "Play Word" to repeat the audio');
-      }, 1500);
     }
   };
 
