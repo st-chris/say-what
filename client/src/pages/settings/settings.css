@@ -1,3 +1,7 @@
 .p-10 {
   padding: 10px;
 }
+.form-settings {
+  display: grid;
+  align-content: space-between;
+}

@@ -1,4 +1,5 @@
 .one-button {
+  align-self: end;
   display: grid;
   grid-template-columns: 1fr;
 }
@@ -23,18 +24,10 @@
   box-sizing: border-box;
   padding: 15px;
 }
-.previous,
-.next {
-  background-color: #f7f8f9;
-  color: #e4aa26;
-  height: 100%;
-  border: none;
-  font-size: 1.5rem;
-}
 .answer {
   font-size: 1.5rem;
-  border: 1px solid #e4aa26;
-  color: #8e676e;
+  border: 1px solid #1a4a83;
+  color: #1a4a83;
   padding: 4px;
   width: 80%;
 }

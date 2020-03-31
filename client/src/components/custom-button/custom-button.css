@@ -5,17 +5,17 @@
   line-height: 50px;
   font-size: 18px;
   box-sizing: border-box;
-  background-color: #8e676e;
-  color: #e4aa26;
+  background-color: #1a4a83;
+  color: #fff04d;
   text-transform: uppercase;
   font-weight: bolder;
   border: none;
   cursor: pointer;
 }
 .custom-button:hover {
-  background-color: #e4aa26;
-  color: #8e676e;
-  border: 1px solid #8e676e;
+  background-color: #fff04d;
+  color: #1a4a83;
+  border: 1px solid #1a4a83;
 }
 .left,
 .both {

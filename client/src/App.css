@@ -8,7 +8,7 @@ body {
   font-family: 'Varela Round', sans-serif;
 }
 h1 {
-  color: #8e676e;
+  color: #1a4a83;
 }
 .w-100 {
   width: 100%;
@@ -42,6 +42,8 @@ h1 {
 .content {
   background-color: #f7f8f9;
   box-sizing: border-box;
+  min-height: 200px;
+  display: grid;
 }
 
 .buttons {
@@ -52,19 +54,18 @@ h1 {
 }
 .btn-first {
   box-sizing: border-box;
-  background-color: #8e676e;
-  color: #e4aa26;
+  background-color: #1a4a83;
+  color: #fff;
   padding: 5px;
 }
 .btn-answer {
-  background-color: #e4aa26;
-  color: #8e676e;
+  background-color: #fff04d;
+  color: #1a4a83;
   font-size: 1.5em;
 }
 .btn-answer:hover {
-  background-color: #f7f8f9;
-  border: 1px solid #8e676e;
-  color: #8e676e;
+  background-color: #1a4a83;
+  color: #fff04d;
   font-size: 1.5rem;
 }
 .btn-play {

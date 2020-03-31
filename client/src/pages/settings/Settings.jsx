@@ -50,7 +50,7 @@ const Settings = ({
             <div className='text-center text-top'>
               Game settings of {user && user.name}
             </div>
-            <form onSubmit={onSubmit}>
+            <form className='form-settings' onSubmit={onSubmit}>
               <div className='stats p-10 text-center'>
                 <label htmlFor='voice_speed'>Voice speed:</label>
                 <input
